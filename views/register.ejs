@@ -1,0 +1,80 @@
+<%- include("partials/header") %>
+<h1 style="text-align:center">
+	Sign Up here!!
+</h1>
+<div class="container" style="width:30%; margin:25px auto;">
+<form action="register" method="POST">
+	<div class="form-group">
+		<input id="1" class="form-control" type="text" name="username" placeholder="username">
+		<button type="button">
+			<i class="fas fa-microphone" onclick="startDictation(1)"></i>
+		</button>
+	</div>
+	<div class="form-group">
+		<input id="2" class="form-control" type="password" name="password" placeholder="password">
+		<button type="button">
+			<i class="fas fa-microphone" onclick="startDictation(2)"></i>
+		</button>
+	</div>
+	<div class="form-group">
+		<input id="3" class="form-control" type="text" name="firstName" placeholder="first name">
+		<button type="button">
+			<i class="fas fa-microphone" onclick="startDictation(3)"></i>
+		</button>
+	</div>
+	<div class="form-group">
+		<input id="4" class="form-control" type="text" name="lastName" placeholder="last name">
+		<button type="button">
+			<i class="fas fa-microphone" onclick="startDictation(4)"></i>
+		</button>
+	</div>
+	<div class="form-group">
+		<input id="5" class="form-control" type="email" name="email" placeholder="xyz@gmail.com">
+		<button type="button">
+			<i class="fas fa-microphone" onclick="startDictation(5)"></i>
+		</button>
+	</div>
+	<div class="form-group">
+		<input id="6" class="form-control" type="text" name="profilePic" placeholder="profile pic url">
+		<button type="button">
+			<i class="fas fa-microphone" onclick="startDictation(6)"></i>
+		</button>
+	</div>
+	<div class="form-group">
+		<input id="7" class="form-control" type="password" name="adminCode" placeholder="Admin code(If you are not admin leave it blank)">
+		<button type="button">
+			<i class="fas fa-microphone" onclick="startDictation(7)"></i>
+		</button>
+	</div>
+	<div class="form-group">
+		<button class="btn btn-success">
+			Sign Up
+		</button>
+	</div>
+</form>
+</div>
+<script>
+
+      function startDictation(id) {
+
+        if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+          var recognition = new webkitSpeechRecognition();
+
+          recognition.continuous = false;
+          recognition.interimResults = false;
+          recognition.lang = "en-US";
+          recognition.start();
+
+          recognition.onresult = function (e) {
+            document.getElementById(id).value = e.results[0][0].transcript;
+            recognition.stop();
+          };
+          recognition.onerror = function(e) {
+            recognition.stop();
+          }
+        }
+      }
+
+    </script>
+<%- include("partials/footer") %>

@@ -1,0 +1,55 @@
+<%- include("partials/header") %>
+<div class="ui main text container segment">
+	<div class="ui huge header">
+		New Blog
+	</div>
+	<form class="ui form" action="/blogs" method="POST">
+		<div class="field">
+			<label>Title</label>
+			<input id="10" type="text" name="blog[title]" placeholder="name">
+			<button type="button">
+				<i class="fas fa-microphone" onclick="startDictation(10)"></i>
+			</button>
+		</div>
+		<div class="field">
+			<label>Image</label>
+			<input id="11" type="text" name="blog[image]" placeholder="image">
+			<button type="button">
+				<i class="fas fa-microphone" onclick="startDictation(11)"></i>
+			</button>
+		</div>
+		<div class="field">
+			<label>Blog Content</label>
+			<textarea id="12" name="blog[body]" placeholder="text goes here"></textarea>
+			<button type="button">
+				<i class="fas fa-microphone" onclick="startDictation(12)"></i>
+			</button>
+		</div>
+		<input class="ui purple basic button" type="submit">
+	</form>		
+</div>
+<script>
+	function startDictation(id) {
+
+        if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+          var recognition = new webkitSpeechRecognition();
+
+          recognition.continuous = false;
+          recognition.interimResults = false;
+          recognition.lang = "en-US";
+          recognition.start();
+
+          recognition.onresult = function (e) {
+            document.getElementById(id).value = e.results[0][0].transcript;
+            recognition.stop();
+          };
+          recognition.onerror = function(e) {
+            recognition.stop();
+          }
+        }
+      }
+
+    </script>
+
+<%- include("partials/footer") %>

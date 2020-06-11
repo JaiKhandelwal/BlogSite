@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Blog App</title>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<script src="https://kit.fontawesome.com/5506f7f00f.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+	</head>
+	<body>
+		<div class="ui fixed inverted menu">
+			<div class="ui container">
+				<div class="header item"><i class="blogger icon"></i>
+					Blog Site
+				</div>
+				<a href="/" class="item">Home</a>
+				<a href="/blogs/new" class="item">New Post</a>
+				<% if(!currentUser){ %>
+					<a href="/register" class="item" floated="right">Sign Up</a>
+					<a href="/login" class="item" floated="right">Login</a>
+				<% } else { %>
+					<li><a class="item" href="/" floated="right">Signed in as <%=currentUser.username %></a></li>
+					<a href="/logout" class="item" floated="right">Logout</a>
+				<% } %>
+			</div>
+		</div>
+		
+	
