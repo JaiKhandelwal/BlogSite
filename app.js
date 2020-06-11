@@ -18,7 +18,7 @@ var authRoutes=require("./routes/auth");
 //mongoose configuration
 //===============================
 //mongoose.connect("mongodb://localhost/blog_app",{useNewUrlParser:true,useUnifiedTopology:true});
-mongoose.connect("mongodb+srv://JaiDbUser:jaipurcity@cluster0-oqrxi.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true});
+mongoose.connect(DATABASE,{useNewUrlParser:true,useUnifiedTopology:true});
 mongoose.set('useNewUrlParser',true);
 mongoose.set('useUnifiedTopology',true);
 app.set("view engine","ejs");
